@@ -62,7 +62,7 @@ public function statisticsScreen(showID:String = "All"):void
 		if(pc.hasStatusEffect("Force Fem Gender")) output2("\n<b>* Gender Preference:</b> Female");
 		else if(pc.hasStatusEffect("Force Male Gender")) output2("\n<b>* Gender Preference:</b> Male");
 		else output2("\n<b>* Gender Alignment: </b>" + pc.mfn("Male","Female",pc.mf("Androgynous, Male Pronouns","Androgynous, Female Pronouns")));
-		output2("\n<b>* Femininity</b> <i>(Negative is Masculine)</i><b>: </b>" + Math.round((pc.femininity - 50) * 2) + " %");
+		output2("\n<b>* " + (pc.femininity >= 50 ? "Femininity" : "Masculinity") + ": </b>" + Math.abs(Math.round((pc.femininity - 50) * 2)) + " %");
 		output2("\n<b>* Personality Score: </b>" + Math.round(pc.personality));
 		if(pc.isNice()) output2(", Kind");
 		if(pc.isMischievous()) output2(", Mischievous");
@@ -764,8 +764,8 @@ public function statisticsScreen(showID:String = "All"):void
 		output2("\n\n" + blockHeader("General Statistics", false));
 		// Crew
 		output2("\n<b><u>Crew</u></b>");
-		output2("\n<b>* Total Recruited: </b>" + crewRecruited());
-		output2("\n<b>* Total Onboard: </b>" + crew(true));
+		output2("\n<b>* Total Recruited: </b>" + crewRecruited(true));
+		output2("\n<b>* Total Onboard: </b>" + crew(true, true));
 		// Traveling
 		output2("\n<b><u>Travel</u></b>");
 		output2("\n<b>* Time Spent Moving From Room to Room: </b>" + prettifyMinutes(StatTracking.getStat("movement/time travelled")));
@@ -4693,9 +4693,14 @@ public function displayEncounterLog(showID:String = "All"):void
 			miscCount++;
 		}
 		// Super rare and weird TF items/sex toys - regular rare items/armor/weapons can be omitted
-		if(flags["SYNTHSHEATH_ACQUIRED"] != undefined || flags["SYNTHSHEATH_TWO_FOUND"] != undefined || flags["LOOTED_COCKBOX"] != undefined || flags["ZODEE_GALOQUEST"] != undefined)
+		if(flags["BUTTSLUTINATOR"] != undefined || flags["SYNTHSHEATH_ACQUIRED"] != undefined || flags["SYNTHSHEATH_TWO_FOUND"] != undefined || flags["LOOTED_COCKBOX"] != undefined || flags["ZODEE_GALOQUEST"] != undefined)
 		{
 			output2("\n<b><u>Suspicious Items</u></b>");
+			// Buttslutinator Mark 2
+			if(flags["BUTTSLUTINATOR"] != undefined)
+			{
+				output2("\n<b>* Buttslutinator Mark II, Times Used:</b> " + flags["BUTTSLUTINATOR"]);
+			}
 			// Big like Cock-Box!
 			if(flags["LOOTED_COCKBOX"] != undefined)
 			{
@@ -4795,7 +4800,7 @@ public function displayEncounterLog(showID:String = "All"):void
 			miscCount++;
 		}
 		// Sexploration: The Sex Toys
-		if(flags["NIVAS_BIONAHOLE_USES"] != undefined || flags["SYRI_BIONAHOLE_USES"] != undefined || flags["TAMANI_HOLED"] != undefined || flags["GRAVCUFFS_USES"] != undefined || flags["HOVERHOLE_USES"] != undefined || flags["BUBBLE_BUDDIED"] != undefined || flags["EGG_TRAINER_INSTALLED"] != undefined || pc.hasItem(new EggTrainer()))
+		if(flags["NIVAS_BIONAHOLE_USES"] != undefined || flags["SYRI_BIONAHOLE_USES"] != undefined || flags["TAMANI_HOLED"] != undefined || flags["GRAVCUFFS_USES"] != undefined || flags["HOVERHOLE_USES"] != undefined || flags["SUKMASTRED"] != undefined || flags["BUBBLE_BUDDIED"] != undefined || flags["EGG_TRAINER_INSTALLED"] != undefined || pc.hasItem(new EggTrainer()))
 		{
 			output2("\n<b><u>Sex Toys</u></b>");
 			// BionaHoles
@@ -4806,6 +4811,8 @@ public function displayEncounterLog(showID:String = "All"):void
 			if(flags["GRAVCUFFS_USES"] != undefined) output2("\n<b>* Grav-Cuffs, Times Used: </b>" + flags["GRAVCUFFS_USES"]);
 			// Hover Hole
 			if(flags["HOVERHOLE_USES"] != undefined) output2("\n<b>* Hovering Pocket-Pussy, Times Used: </b>" + flags["HOVERHOLE_USES"]);
+			// SukMastr 2000
+			if(flags["SUKMASTRED"] != undefined) output2("\n<b>* SukMastr 2000, Times Used: </b>" + flags["SUKMASTRED"]);
 			// Bubble Buddy
 			if(flags["BUBBLE_BUDDIED"] != undefined) output2("\n<b>* TamaniCorp, Bubble Buddy, Times Used: </b>" + flags["BUBBLE_BUDDIED"]);
 			// Egg Trainer

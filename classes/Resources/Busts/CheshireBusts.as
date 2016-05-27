@@ -1,5 +1,6 @@
 package classes.Resources.Busts 
 {
+	import flash.geom.Rectangle;
 	/**
 	 * ...
 	 * @author Gedan
@@ -14,6 +15,12 @@ package classes.Resources.Busts
 		
 		[Embed(source = "../../../assets/images/npcs/cheshire/aliss.png", mimeType = "image/png")]
 		public var Bust_ALISS:Class;
+
+		[Embed(source = "../../../assets/images/npcs/cheshire/anno.png", mimeType = "image/png")]
+		public var Bust_ANNO:Class;
+		public var Bounds_ANNO:Rectangle = new Rectangle(25, 15, 70, 70);
+		[Embed(source = "../../../assets/images/npcs/cheshire/anno_nude.png", mimeType = "image/png")]
+		public var Bust_ANNO_NUDE:Class;
 		
 		[Embed(source = "../../../assets/images/npcs/cheshire/Carl.png", mimeType = "image/png")]
 		public var Bust_CARL:Class;
@@ -117,6 +124,11 @@ package classes.Resources.Busts
 		{
 			[Embed(source = "../../../assets/images/npcs/cheshire/hr/aliss.png", mimeType = "image/png")]
 			public var Full_ALISS:Class;
+
+			[Embed(source = "../../../assets/images/npcs/cheshire/hr/anno.png", mimeType = "image/png")]
+			public var Bust_ANNO:Class;
+			[Embed(source = "../../../assets/images/npcs/cheshire/hr/anno_nude.png", mimeType = "image/png")]
+			public var Bust_ANNO_NUDE:Class;
 			
 			[Embed(source = "../../../assets/images/npcs/cheshire/hr/Carl.png", mimeType = "image/png")]
 			public var Full_CARL:Class;

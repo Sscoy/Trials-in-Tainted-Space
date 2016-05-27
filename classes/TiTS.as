@@ -130,6 +130,7 @@
 
 		//Misc content
 		include "../includes/masturbation/bubbleBuddy.as";
+		include "../includes/masturbation/sukMastr.as";
 		include "../includes/rivalEncounters.as";
 		include "../includes/saendra.as";
 		include "../includes/travelEvents.as";
@@ -141,6 +142,7 @@
 		include "../includes/events/atha_lets_fapper.as";
 		include "../includes/events/bimboPennyAndBadgerQuest/badgerGifts.as";
 		include "../includes/events/tentacle_psychic_hatchling.as";
+		include "../includes/events/kiroCrewQuest/buttslutinator.as";
 
 		//Tavros Station
 		include "../includes/tavros/aina.as";
@@ -203,6 +205,7 @@
 		include "../includes/tarkus/dumbfuckBonus.as";
 		include "../includes/tarkus/goblinPool.as";
 		include "../includes/tarkus/grayGoo.as";
+		include "../includes/tarkus/grayGooArmor.as";
 		include "../includes/tarkus/lane.as";
 		include "../includes/tarkus/lapinara.as";
 		include "../includes/tarkus/raskvelFemaleFight.as";
@@ -395,7 +398,7 @@
 
 			trace("TiTS Constructor")
 
-			version = "0.6.54";
+			version = "0.6.56";
 
 			//temporary nonsense variables.
 			temp = 0;
@@ -540,8 +543,6 @@
 			
 			toggleWTF();
 			
-			if (!inCombat()) userInterface.showBust("none");
-			
 			if (evt.currentTarget is MainButton)
 			{
 				trace("Button " + (evt.currentTarget as MainButton).buttonName + " clicked");
@@ -561,6 +562,7 @@
 			else
 			{
 				if (evt.currentTarget.func != null) evt.currentTarget.func(evt.currentTarget.arg);
+				else kGAMECLASS.clearBust();
 			}
 			
 			if (!inCombat()) 

@@ -69,7 +69,9 @@
 		public static const FLAG_DOUBLE_HEADED:int							= 36;
 		public static const FLAG_GOOEY:int									= 37;
 		public static const FLAG_SPIKED:int									= 38;
-		public static const FLAG_ABSORBENT:int									= 39;
+		public static const FLAG_ABSORBENT:int								= 39;
+		public static const FLAG_SLIGHTLY_PUMPED:int 						= 40;
+		public static const FLAG_PUMPED:int 								= 41;
 		
 		public static const FLAG_NAMES:Array = [
 			"OFFSET -- INVALID",
@@ -112,6 +114,8 @@
 			"Gooey",
 			"Spiked",
 			"Absorbent",
+			"Slightly Pumped",
+			"Fully Pumped",
 		];
 		
 		public static const VALID_SKIN_FLAGS:Array = [
@@ -877,6 +881,8 @@
 			FLAG_NUBBY,
 			FLAG_OVIPOSITOR,
 			FLAG_GOOEY,
+			FLAG_SLIGHTLY_PUMPED,
+			FLAG_PUMPED,
 		];
 		
 		//ROOM FLAGS
@@ -908,6 +914,7 @@
 		public static const ICYTUNDRA:int							    = 25;
 		public static const FROZENTUNDRA:int							= 26;
 		public static const SHIPINTERIOR:int							= 27; // Used to flag all rooms of player-own ships.
+		public static const POOL:int									= 28;
 		
 		// Temp flag alias whilst the asset gets introduced
 		public static const LIFT:int = OBJECTIVE;
